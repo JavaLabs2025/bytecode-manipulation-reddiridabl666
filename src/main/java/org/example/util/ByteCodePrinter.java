@@ -31,8 +31,9 @@ public class ByteCodePrinter {
             return name.substring(0, lastBracketIndex + 1) + name.substring(lastSlashIndex + 1, endIndex);
         }
     }
-    private static void analyzeMethod(
-            final MethodNode method, final Analyzer<BasicValue> analyzer, final PrintWriter printWriter) {
+
+    private static void analyzeMethod(final MethodNode method, final Analyzer<BasicValue> analyzer,
+            final PrintWriter printWriter) {
         var textifier = new Textifier();
         var traceMethodVisitor = new TraceMethodVisitor(textifier);
 
@@ -82,7 +83,8 @@ public class ByteCodePrinter {
 
     public void printBubbleSortBytecode() throws IOException {
         var cn = new ClassNode();
-        var classFileBytes = Files.readAllBytes(Path.of("build/classes/java/main/org/itmo/lab1/example/BubbleSort.class"));
+        var classFileBytes = Files
+                .readAllBytes(Path.of("build/classes/java/main/org/itmo/lab1/example/BubbleSort.class"));
         var classReader = new ClassReader(classFileBytes);
         classReader.accept(cn, ClassReader.EXPAND_FRAMES);
         printBytecode(cn);
