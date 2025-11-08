@@ -14,21 +14,21 @@ public class ABCVisitor extends ClassVisitor {
         super(ASM8);
     }
 
-    private int assignments = 0;
+    private long assignments = 0;
 
-    private int branches = 0;
+    private long branches = 0;
 
-    private int conditionals = 0;
+    private long conditionals = 0;
 
-    public int getAssignments() {
+    public long getAssignments() {
         return assignments;
     }
 
-    public int getBranches() {
+    public long getBranches() {
         return branches;
     }
 
-    public int getConditionals() {
+    public long getConditionals() {
         return conditionals;
     }
 

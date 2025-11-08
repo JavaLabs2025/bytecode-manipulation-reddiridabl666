@@ -20,13 +20,13 @@ public class InheritanceVisitor extends ClassVisitor {
 
     public int maxDepth() {
         return inheritanceDepthMap().values().stream()
-                .max(Integer::compareTo)
+                .max(Integer::compare)
                 .orElse(1);
     }
 
     public int avgDepth() {
         var inheritanceDepth = inheritanceDepthMap().entrySet().stream()
-                .filter(entry -> entry.getValue() > 1) // filter out childless classes to get something more interesting
+                .filter(entry -> entry.getValue() > 1) // filter out childless classes to get more interesting results
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         int count = inheritanceDepth.size();
@@ -74,40 +74,5 @@ public class InheritanceVisitor extends ClassVisitor {
             inheritanceMap.put(superName, new ArrayList<>());
         }
         inheritanceMap.get(superName).add(name);
-    }
-
-    @Override
-    public void visitSource(String source, String debug) {
-    }
-
-    @Override
-    public void visitOuterClass(String owner, String name, String desc) {
-    }
-
-    @Override
-    public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-        return null;
-    }
-
-    @Override
-    public void visitAttribute(Attribute attr) {
-    }
-
-    @Override
-    public void visitInnerClass(String name, String outerName, String innerName, int access) {
-    }
-
-    @Override
-    public FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
-        return null;
-    }
-
-    @Override
-    public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-        return null;
-    }
-
-    @Override
-    public void visitEnd() {
     }
 }
