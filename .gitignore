@@ -44,3 +44,4 @@ bin/
 
 .idea
 samples-unpacked
+out.json

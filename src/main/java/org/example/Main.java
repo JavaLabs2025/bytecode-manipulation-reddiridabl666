@@ -40,6 +40,7 @@ public class Main {
             ObjectMapper mapper = new ObjectMapper();
             OutputStream outputStream = new FileOutputStream(outFile);
             mapper.writeValue(outputStream, metrics);
+            outputStream.close();
         }
     }
 }
